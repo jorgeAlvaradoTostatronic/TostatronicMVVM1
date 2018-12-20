@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TostatronicMVVM.Views.ProductsView"
+             Title="Productos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="cart.png"
+                     Command="{Binding SeeMyCartCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                <Picker Title="Seleccione tipo de precio..." HorizontalOptions="Start" FontSize="Small" SelectedIndexChanged="ChangePriceKind_IndexChanged">
+                    <Picker.Items>
+                        <x:String>Precio Publico</x:String>
+                        <x:String>Precio Distribuidor</x:String>
+                        <x:String>Precio minimo</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding listOfProductsAction}"
+                          SeparatorColor="Gray"
+                          IsPullToRefreshEnabled="False"
+                          RowHeight="150">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Opacity="1.5" BackgroundColor="LightSlateGray">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding Imagen}"         
+                                           Grid.Row="0" 
+                                           Grid.Column="0" 
+                                           Grid.ColumnSpan="2" 
+                                           Grid.RowSpan="3" 
+                                           VerticalOptions="FillAndExpand" 
+                                           HorizontalOptions="FillAndExpand"
+                                           Aspect="AspectFit"/>
+                                    
+                                    <Label  Text="{Binding Codigo}"          
+                                            Grid.Row="0" Grid.Column="2" 
+                                            Grid.ColumnSpan="1" 
+                                            Grid.RowSpan="1"/>
+                                    <Label  Text="{Binding Nombre}"          
+                                            Grid.Row="1" Grid.Column="2" 
+                                            Grid.ColumnSpan="3" 
+                                            Grid.RowSpan="1"/>
+                                    <Label  Text="{Binding Existencia}"      
+                                            Grid.Row="2" Grid.Column="2" 
+                                            Grid.ColumnSpan="1" 
+                                            Grid.RowSpan="1"/>
+                                    <Label  Text="{Binding PrecioMostrar, StringFormat='$ {0}'}"   
+                                            Grid.Row="0" 
+                                            Grid.Column="4" 
+                                            Grid.ColumnSpan="1" 
+                                            Grid.RowSpan="1"/>
+                                    <Button Image="less.png" 
+                                            Clicked="ButtonLess_Clicked"
+                                            Grid.Row="2" 
+                                            Grid.Column="3" 
+                                            Grid.ColumnSpan="1" 
+                                            Grid.RowSpan="1"
+                                            CommandParameter="{Binding .}"/>
+                                    <Entry  Text="{Binding Agregados}"       
+                                            Grid.Row="2" 
+                                            Grid.Column="4" 
+                                            Grid.ColumnSpan="1" 
+                                            Grid.RowSpan="1" 
+                                            Keyboard="Numeric" 
+                                            HorizontalTextAlignment="Center"/>
+                                    <Button Image="more.png"  
+                                            Clicked="ButtonMore_Clicked"
+                                            Grid.Row="2" 
+                                            Grid.Column="5" 
+                                            Grid.ColumnSpan="1" 
+                                            Grid.RowSpan="1" 
+                                            CommandParameter="{Binding .}"/>
+                                    <Button Image="ecommerce.png" 
+                                            Clicked="ButtonAddToCar_Clicked"
+                                            Grid.Row="1" 
+                                            Grid.Column="6" 
+                                            Grid.ColumnSpan="1" 
+                                            Grid.RowSpan="1" 
+                                            CommandParameter="{Binding .}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

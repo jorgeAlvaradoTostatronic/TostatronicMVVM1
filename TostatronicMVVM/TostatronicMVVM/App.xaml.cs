@@ -1,4 +1,5 @@
 ﻿using System;
+using TostatronicMVVM.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace TostatronicMVVM
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new ProductsView());
         }
 
         protected override void OnStart()
