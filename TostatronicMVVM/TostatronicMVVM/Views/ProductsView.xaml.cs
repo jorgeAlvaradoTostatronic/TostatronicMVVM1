@@ -45,5 +45,10 @@ namespace TostatronicMVVM.Views
         {
             (BindingContext as ProductViewModel).PriceKindChangedCommand.Execute(((Picker)sender).SelectedIndex);
         }
+
+        private void EntryAgregados_Unfocused(object sender, FocusEventArgs e)
+        {
+            //(BindingContext as ProductViewModel).EntryValueChangedCommand.Execute(((Entry)sender).Text);
+        }
     }
 }

@@ -75,7 +75,9 @@
                                             Grid.ColumnSpan="1" 
                                             Grid.RowSpan="1"
                                             CommandParameter="{Binding .}"/>
-                                    <Entry  Text="{Binding Agregados}"       
+                                    <Entry  Text="{Binding Agregados}"  
+                                            IsEnabled="{Binding IsEnabled}"
+                                            Unfocused="EntryAgregados_Unfocused"
                                             Grid.Row="2" 
                                             Grid.Column="4" 
                                             Grid.ColumnSpan="1" 
